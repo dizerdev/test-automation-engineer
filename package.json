@@ -1,0 +1,24 @@
+{
+  "name": "test-automation-engineer",
+  "version": "1.0.0",
+  "description": "Repositorio de estudos das aulas de MBA em Engenharia de Software",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dizerdev/test-automation-engineer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/dizerdev/test-automation-engineer/issues"
+  },
+  "homepage": "https://github.com/dizerdev/test-automation-engineer#readme",
+  "devDependencies": {
+    "typescript": "^5.1.6"
+  }
+}
