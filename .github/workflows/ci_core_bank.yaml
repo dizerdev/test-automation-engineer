@@ -1,0 +1,50 @@
+name: core
+run-name: core
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "Checkout repository"
+        uses: actions/checkout@v4
+
+      - name: "Set up Node 18"
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18.17.1"
+
+      - name: "Install npm dependencies"
+        working-directory: .
+        run: npm install
+
+      - name: "Run tests"
+        working-directory: .
+        run: npx jest --coverage
+
+      - name: "Run Stryker"
+        working-directory: .
+        run: npm run stryker
+
+      - name: "Run Cucumber"
+        working-directory: .
+        run: npm run test:cucumber
+
+      - name: "Upload code coverage report"
+        uses: actions/upload-artifact@v4
+        with:
+          name: code-coverage-reports
+          path: ./coverage/**/*
+          retention-days: 5
+
+      - name: "Upload mutation tests report"
+        uses: actions/upload-artifact@v4
+        with:
+          name: mutation-test-reports
+          path: ./reports/**/*
+          retention-days: 5
